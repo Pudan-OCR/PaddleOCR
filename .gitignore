@@ -1,3 +1,5 @@
+venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 .ipynb_checkpoints/
@@ -9,8 +11,6 @@ __pycache__/
 
 inference/
 inference_results/
-output/
-train_data/
 log/
 *.DS_Store
 *.vs
