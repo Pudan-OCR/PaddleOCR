@@ -66,7 +66,7 @@ Train:
     name: SimpleDataSet
     data_dir: ./train_data/kk/
     label_file_list:
-      - ./train_data/kk/train_label.txt
+      - ./train_data/kk/train_label_2.txt
     ratio_list: [1.0]
     transforms:
       - DecodeImage: # load image
@@ -109,7 +109,7 @@ Eval:
     name: SimpleDataSet
     data_dir: ./train_data/kk/
     label_file_list:
-      - ./train_data/kk/test_label.txt
+      - ./train_data/kk/test_label_2.txt
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
