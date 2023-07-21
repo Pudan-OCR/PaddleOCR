@@ -20,6 +20,7 @@ import numpy as np
 
 import os
 import sys
+import time
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
@@ -81,6 +82,7 @@ def main():
         os.makedirs(os.path.dirname(save_res_path))
 
     model.eval()
+    start_time = time.time()
     with open(save_res_path, "wb") as fout:
         for file in get_image_file_list(config['Global']['infer_img']):
             logger.info("infer_img: {}".format(file))
@@ -126,6 +128,9 @@ def main():
             otstr = file + "\t" + json.dumps(dt_boxes_json) + "\n"
             fout.write(otstr.encode())
 
+    end_time = time.time()
+    inference_time = end_time - start_time
+    logger.info(f"The inference time is {inference_time: .4f} seconds")
     logger.info("success!")
 
 
