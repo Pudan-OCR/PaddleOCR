@@ -36,6 +36,7 @@ from ppocr.postprocess import build_post_process
 from ppocr.utils.save_load import load_model
 from ppocr.utils.utility import get_image_file_list
 import tools.program as program
+gitimport time
 
 
 def main():
@@ -111,7 +112,7 @@ def main():
         os.makedirs(os.path.dirname(save_res_path))
 
     model.eval()
-
+    start_time = time.time()
     with open(save_res_path, "w") as fout:
         for file in get_image_file_list(config['Global']['infer_img']):
             logger.info("infer_img: {}".format(file))
@@ -180,6 +181,10 @@ def main():
             if info is not None:
                 logger.info("\t result: {}".format(info))
                 fout.write(file + "\t" + info + "\n")
+
+    end_time = time.time()
+    inference_time = end_time - start_time
+    logger.info(f"The inference time is {inference_time: .4f} seconds")
     logger.info("success!")
 
 
